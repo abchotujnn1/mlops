@@ -48,4 +48,4 @@ docker run -d --name pytorch_server_container -p 8080:8080 pytorch-server:latest
 docker logs -f pytorch_server_container
 ```
 
-![images]("images/fast_api_serving.png")
+![images](images/fast_api_serving.png)
