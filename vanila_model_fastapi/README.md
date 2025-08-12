@@ -1,7 +1,9 @@
 ### Scalable model deployment
+----------
 * Objective: deploy a containerize PyTorch model using KServe on a kubernetes cluster with autocscaling
 
-#### Goal: 
+#### Goal:
+---------
 Deploy a PyTorch model (packaged in container) to a kubernetes cluster using KServe as the model serving layer, and enable autoscaling as pods scale with traffic or resources metrics.
 
 #### High Level architecture:
@@ -16,6 +18,7 @@ Deploy a PyTorch model (packaged in container) to a kubernetes cluster using KSe
   └─ Autoscaling (Knative KPA / K8s HPA / KEDA)
 
 #### Steps:
+-----------
 1. Export/save PyTorch model (TorchScript or simple pickled model).
 2. Create minimal model server container (FastAPI + PyTorch load/predict OR use TorchServe).
 3. Build & push Docker image to registry.
@@ -30,7 +33,7 @@ Deploy a PyTorch model (packaged in container) to a kubernetes cluster using KSe
 docker build -t pytorch-server:latest .
 docker push pytorch-server:latest
 
-*Note: For production, avoid baking large models into images--instead pull from object store (S3 | MinIO) at startup or KServe/Triton handle model repo.
+* Note: For production, avoid baking large models into images--instead pull from object store (S3 | MinIO) at startup or KServe/Triton handle model repo.
 Upload model.pt to S3/GCS/MinIO or make available on PVC. e.g. on AWS
 aws s3 cp model.pt s3://my-model-bucket/models/my-model/1/model.pt
 
